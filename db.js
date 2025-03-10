@@ -1,5 +1,5 @@
-const { PrismaClient } = require("prisma");
-const prisma = PrismaClient();
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
 
 module.exports.UserQueries = {
   getUserByUname: async function (username) {

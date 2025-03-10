@@ -9,6 +9,9 @@ const expressSession = require("express-session");
 const { PrismaSessionStore } = require("@quixo3/prisma-session-store");
 const { PrismaClient } = require("@prisma/client");
 
+//Routes
+const indexRouter = require("./routes/indexRouter");
+
 const app = express();
 
 const assetsPath = path.join(__dirname, "public");
@@ -37,6 +40,8 @@ app.use(
 );
 
 app.use(passport.session());
+
+app.use("/", indexRouter);
 
 app.listen(process.env.PORT, () => {
   console.log("Hey Ya");
