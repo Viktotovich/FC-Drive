@@ -91,12 +91,12 @@ module.exports.getMain = async (req, res) => {
   if (req.isAuthenticated()) {
     const title = "Welcome to the main page, " + req.user.fullname;
     const location = "/main";
-    const user = await db.storage.findUnique({
+    const storage = await db.storage.findUnique({
       where: {
         userId: req.user.id,
       },
     });
-    res.render("pages/main", { title, links, location, user });
+    res.render("pages/main", { title, links, location, storage });
   } else {
     res.send(
       "<p>You can't view this page as you are not authorized, log-in to your account first please.</p>",
