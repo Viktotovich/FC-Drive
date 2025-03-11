@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=title%></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <%-include("../partials/header")%>
+    <section class="mx-20">
+      <h1 class="mt-5 mb-10 text-3xl text-center"><%=title%></h1>
+      <%-include("../partials/error-display")%>
+      <form action="/register" method="POST">
+        <div class="mt-5 flex flex-col items-center">
+          <div class="flex flex-col">
+            <label for="firstName">First Name: </label>
+            <input
+              class="border-slate-300 rounded-sm max-w-60 border-1"
+              type="text"
+              name="firstName"
+              id="first-name"
+              required
+              minlength="2"
+              maxlength="35"
+            />
+          </div>
+          <div class="flex flex-col">
+            <label for="lastName">Last Name: </label>
+            <input
+              class="border-slate-300 rounded-sm max-w-60 border-1"
+              type="text"
+              name="lastName"
+              id="last-name"
+              required
+              minlength="2"
+              maxlength="35"
+            />
+          </div>
+          <div class="flex flex-col">
+            <label for="username">Username: </label>
+            <input
+              class="border-slate-300 rounded-sm max-w-60 border-1"
+              type="text"
+              name="username"
+              id="username"
+              required
+              minlength="3"
+              maxlength="70"
+            />
+          </div>
+          <div class="flex flex-col">
+            <label for="password">Password:</label>
+            <input
+              class="border-slate-300 rounded-sm max-w-60 border-1"
+              type="password"
+              minlength="5"
+              maxlength="70"
+              name="password"
+              id="password"
+              required
+            />
+          </div>
+          <div class="flex flex-col">
+            <label for="cPassword">Confirm Password:</label>
+            <input
+              class="border-slate-300 rounded-sm max-w-60 border-1"
+              type="password"
+              minlength="5"
+              maxlength="70"
+              name="cPassword"
+              id="c-password"
+              required
+            />
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <button
+            type="submit"
+            class="mb-10 mt-5 px-14 py-2 rounded-sm bg-blue-950 text-white hover:bg-blue-900 hover:cursor-pointer"
+          >
+            Register
+          </button>
+        </div>
+      </form>
+      <h2 class="text-xl mt-10 text-center">Already have an account?</h2>
+      <div class="flex justify-center">
+        <a
+          href="/login"
+          class="mt-5 mb-30 py-2 px-14 rounded-sm bg-blue-500 text-white hover:bg-blue-400 hover:cursor-pointer"
+          >Log In!</a
+        >
+      </div>
+    </section>
+    <%-include("../partials/footer")%>
+  </body>
+</html>

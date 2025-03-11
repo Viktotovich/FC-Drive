@@ -14,3 +14,8 @@ module.exports.getLogin = (req, res) => {
   const title = "Login into your account";
   res.render("pages/login", { title, links });
 };
+
+module.exports.getRegister = (req, res) => {
+  const title = "Register for V-Drive";
+  res.render("pages/register", { title, links });
+};

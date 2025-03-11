@@ -10,7 +10,8 @@
     <%-include("../partials/header")%>
     <section class="mx-20">
       <h1 class="mt-5 mb-10 text-3xl text-center"><%=title%></h1>
-      <form action="/login" method="post">
+      <%-include("../partials/error-display")%>
+      <form action="/login" method="POST">
         <div class="grid justify-center">
           <label for="username" class="block">Username: </label>
           <input
