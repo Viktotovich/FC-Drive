@@ -1,10 +1,14 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const { UserQueries } = require("../db");
+const db = require("../db");
 const { validatePassword } = require("../lib/passwordUtils");
 
 const verifyCallback = async (username, password, done) => {
-  const user = await UserQueries.getUserByUname(username);
+  const user = await db.user.findUniqueOrThrow({
+    where: {
+      username: username,
+    },
+  });
 
   if (!user) {
     return done(null, false);
@@ -29,7 +33,12 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (userId, done) => {
   try {
-    const user = await UserQueries.getUserById(userId);
+    const user = await db.user.findUniqueOrThrow({
+      where: {
+        id: userId,
+      },
+    });
+
     done(null, user);
   } catch (err) {
     done(err);
