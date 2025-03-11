@@ -19,3 +19,12 @@ module.exports.getRegister = (req, res) => {
   const title = "Register for V-Drive";
   res.render("pages/register", { title, links });
 };
+
+module.exports.postRegister = (req, res, next) => {
+  //const errors = validationResult(req)
+};
+
+module.exports.getMain = (req, res) => {
+  const title = "Welcome to the main page, " + req.user.fullname;
+  res.render("pages/main", { title, links });
+};
