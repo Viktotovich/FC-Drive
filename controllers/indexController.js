@@ -65,23 +65,38 @@ module.exports.postRegister = async (req, res, next) => {
   const fullname = firstName + " " + lastName;
   const { salt, hash } = passwordUtils.genPassport(req.body.password);
 
-  await db.user.create({
-    data: {
-      username,
-      fullname,
-      salt,
-      hash,
-    },
-  });
+  try {
+    await db.$transaction(async (prisma) => {
+      await prisma.user.create({
+        data: {
+          username,
+          fullname,
+          salt,
+          hash,
+          Storage: {
+            create: {},
+          },
+        },
+      });
+    });
 
-  res.redirect("/login");
+    res.redirect("/login");
+  } catch (err) {
+    console.error("Failed to create the user or storage: " + err);
+    throw err;
+  }
 };
 
-module.exports.getMain = (req, res) => {
+module.exports.getMain = async (req, res) => {
   if (req.isAuthenticated()) {
     const title = "Welcome to the main page, " + req.user.fullname;
     const location = "/main";
-    res.render("pages/main", { title, links, location });
+    const user = await db.storage.findUnique({
+      where: {
+        userId: req.user.id,
+      },
+    });
+    res.render("pages/main", { title, links, location, user });
   } else {
     res.send(
       "<p>You can't view this page as you are not authorized, log-in to your account first please.</p>",
