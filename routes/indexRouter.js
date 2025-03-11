@@ -5,6 +5,7 @@ const {
   getLogin,
   getRegister,
   getMain,
+  postRegister,
 } = require("../controllers/indexController");
 
 indexRouter.get("/", getIndex);
@@ -12,6 +13,7 @@ indexRouter.get("/login", loginLimiter, getLogin);
 indexRouter.get("/register", getRegister);
 indexRouter.get("/main", getMain);
 
-indexRouter.post("/register");
+indexRouter.post("/register", postRegister);
+indexRouter.post("/login");
 
 module.exports = indexRouter;
