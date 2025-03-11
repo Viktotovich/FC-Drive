@@ -9,12 +9,14 @@ const {
   postRegister,
   postLogin,
   postLogOut,
+  getLogOut,
 } = require("../controllers/indexController");
 
 indexRouter.get("/", getIndex);
 indexRouter.get("/login", getLogin);
 indexRouter.get("/register", getRegister);
 indexRouter.get("/main", getMain);
+indexRouter.get("/logout", getLogOut);
 
 indexRouter.post("/register", postRegister);
 indexRouter.post("/login", loginLimiter, validateSignIn, postLogin);

@@ -7,12 +7,14 @@ const { validationResult } = require("express-validator");
 module.exports.getIndex = (req, res) => {
   const title =
     "Welcome to FC-Drive, it's the place for all your files. You can keep things private, or generate a custom link to share with everyone else. ";
-  res.render("pages/index", { title, links });
+  const location = "/";
+  res.render("pages/index", { title, links, location });
 };
 
 module.exports.getLogin = (req, res) => {
   const title = "Login into your account";
-  res.render("pages/login", { title, links });
+  const location = "/login";
+  res.render("pages/login", { title, links, location });
 };
 
 module.exports.postLogin = (req, res, next) => {
@@ -46,7 +48,8 @@ module.exports.postLogin = (req, res, next) => {
 
 module.exports.getRegister = (req, res) => {
   const title = "Register for V-Drive";
-  res.render("pages/register", { title, links });
+  const location = "/register";
+  res.render("pages/register", { title, links, location });
 };
 
 module.exports.postRegister = async (req, res, next) => {
@@ -75,9 +78,21 @@ module.exports.postRegister = async (req, res, next) => {
 };
 
 module.exports.getMain = (req, res) => {
-  //throw if not authenticated
-  const title = "Welcome to the main page, " + req.user.fullname;
-  res.render("pages/main", { title, links });
+  if (req.isAuthenticated()) {
+    const title = "Welcome to the main page, " + req.user.fullname;
+    const location = "/main";
+    res.render("pages/main", { title, links, location });
+  } else {
+    res.send(
+      "<p>You can't view this page as you are not authorized, log-in to your account first please.</p>",
+    );
+  }
+};
+
+module.exports.getLogOut = (req, res) => {
+  const title = "Are you sure you want to logout?";
+  const location = "/logout";
+  res.render("pages/logout", { title, links, location });
 };
 
 module.exports.postLogOut = (req, res) => {

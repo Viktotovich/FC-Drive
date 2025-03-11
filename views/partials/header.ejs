@@ -1,0 +1,18 @@
+<nav>
+  <ul class="px-10 mt-10 flex justify-between">
+    <li class="px-2">Welcome home</li>
+    <div class="flex">
+      <%links.forEach((link) => { %> <%if(location === "/main" && link.name ===
+      "Log-in") { %> <%//Skips Completely%> <%} else if (location === link.dir){
+      %>
+      <li class="px-2 py-1 bg-blue-200 rounded-sm">
+        <a href="<%=link.dir%>"><%=link.name%></a>
+      </li>
+      <% } else { %>
+      <li class="px-2 py-1 hover:bg-blue-200 rounded-sm">
+        <a href="<%=link.dir%>"><%=link.name%></a>
+      </li>
+      <%}%> <%})%>
+    </div>
+  </ul>
+</nav>
