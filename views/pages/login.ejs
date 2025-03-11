@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=title%></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <%-include("../partials/header")%>
+    <section class="mx-20">
+      <h1 class="mt-5 mb-10 text-3xl text-center"><%=title%></h1>
+      <form action="/login" method="post">
+        <div class="grid justify-center">
+          <label for="username" class="block">Username: </label>
+          <input
+            type="text"
+            minlength="3"
+            maxlength="70"
+            required
+            id="username"
+            name="username"
+            placeholder="Username"
+            class="rounded-sm border-sky-900 pl-1 border-1"
+          />
+        </div>
+        <div class="grid justify-center">
+          <label for="password" class="block">Password: </label>
+          <input
+            type="password"
+            minlength="5"
+            maxlength="70"
+            id="password"
+            name="password"
+            placeholder="Password"
+            class="rounded-sm border-sky-900 pl-1 border-1"
+          />
+        </div>
+        <div class="mt-5 grid justify-center">
+          <button
+            type="submit"
+            class="bg-blue-600 text-white hover:bg-blue-500 py-2 px-14 rounded-sm hover:cursor-pointer"
+          >
+            Log In
+          </button>
+        </div>
+      </form>
+      <h2 class="text-xl mt-20 text-center">Don't have an account yet?</h2>
+      <div class="flex justify-center">
+        <a
+          href="/register"
+          class="mt-5 py-2 px-14 rounded-sm bg-blue-950 text-white hover:bg-blue-900 hover:cursor-pointer"
+          >Register Now</a
+        >
+      </div>
+    </section>
+    <%-include("../partials/footer")%>
+  </body>
+</html>

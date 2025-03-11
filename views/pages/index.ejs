@@ -8,8 +8,18 @@
   </head>
   <body>
     <%-include("../partials/header")%>
-    <section>
-      <h1 class="mt-5 mb-10 mx-20 text-3xl text-center"><%=title%></h1>
+    <section class="mx-20">
+      <h1 class="mt-5 mb-10 text-3xl text-center"><%=title%></h1>
+      <a
+        href="/login"
+        class="block text-center hover:underline hover:before:content-['>']"
+        >Go to the log-in page</a
+      >
+      <a
+        href="/register"
+        class="block text-center hover:underline hover:before:content-['>']"
+        >Or create an account</a
+      >
     </section>
     <%-include("../partials/footer")%>
   </body>

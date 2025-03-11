@@ -9,3 +9,8 @@ module.exports.getIndex = (req, res) => {
     "Welcome to FC-Drive, it's the place for all your files. You can keep things private, or generate a custom link to share with everyone else. ";
   res.render("pages/index", { title, links });
 };
+
+module.exports.getLogin = (req, res) => {
+  const title = "Login into your account";
+  res.render("pages/login", { title, links });
+};
