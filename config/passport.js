@@ -4,7 +4,7 @@ const db = require("../db");
 const { validatePassword } = require("../lib/passwordUtils");
 
 const verifyCallback = async (username, password, done) => {
-  const user = await db.user.findUniqueOrThrow({
+  const user = await db.user.findUnique({
     where: {
       username: username,
     },
@@ -14,7 +14,7 @@ const verifyCallback = async (username, password, done) => {
     return done(null, false);
   }
 
-  const isValid = validatePassword(password, user.hash, user, salt);
+  const isValid = validatePassword(password, user.hash, user.salt);
 
   if (isValid) {
     return done(null, user);
