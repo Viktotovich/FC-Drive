@@ -340,6 +340,9 @@
   .text-white {
     color: var(--color-white);
   }
+  .lowercase {
+    text-transform: lowercase;
+  }
   .hover\:cursor-pointer {
     &:hover {
       @media (hover: hover) {

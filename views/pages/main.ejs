@@ -10,6 +10,9 @@
     <%-include("../partials/header")%>
     <section class="mx-20">
       <h1 class="mt-5 mb-10 text-3xl text-center"><%=title%></h1>
+      <form action="/logout" method="POST">
+        <button type="submit">Logout</button>
+      </form>
     </section>
     <%-include("../partials/footer")%>
   </body>

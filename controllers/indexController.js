@@ -16,12 +16,20 @@ module.exports.getLogin = (req, res) => {
 };
 
 module.exports.postLogin = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).render("pages/login", {
+      title: "Login failed",
+      errors: errors.array(),
+    });
+  }
+
   passport.authenticate("local", (err, user, info) => {
     if (err) {
       return next(err);
     }
     if (!user) {
-      return res.render("/login", {
+      return res.render("pages/login", {
         title: "Login fail",
         errors: ["Wrong username or password."],
       });
@@ -70,4 +78,14 @@ module.exports.getMain = (req, res) => {
   //throw if not authenticated
   const title = "Welcome to the main page, " + req.user.fullname;
   res.render("pages/main", { title, links });
+};
+
+module.exports.postLogOut = (req, res) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+
+    res.redirect("/");
+  });
 };
