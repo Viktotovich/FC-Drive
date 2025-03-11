@@ -9,3 +9,5 @@ module.exports.UserQueries = {
     //prisma
   },
 };
+
+module.exports = prisma;
