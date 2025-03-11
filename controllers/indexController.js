@@ -51,13 +51,13 @@ module.exports.postRegister = async (req, res, next) => {
   }
 
   const { firstName, lastName, username } = req.body;
-  const fullName = firstName + " " + lastName;
+  const fullname = firstName + " " + lastName;
   const { salt, hash } = passwordUtils.genPassport(req.body.password);
 
   await db.user.create({
     data: {
       username,
-      fullname: fullName,
+      fullname,
       salt,
       hash,
     },
