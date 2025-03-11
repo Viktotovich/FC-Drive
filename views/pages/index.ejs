@@ -10,16 +10,18 @@
     <%-include("../partials/header")%>
     <section class="mx-20">
       <h1 class="mt-5 mb-10 text-3xl text-center"><%=title%></h1>
-      <a
-        href="/login"
-        class="block text-center hover:underline hover:before:content-['>']"
-        >Go to the log-in page</a
-      >
-      <a
-        href="/register"
-        class="block text-center hover:underline hover:before:content-['>']"
-        >Or create an account</a
-      >
+      <div class="grid justify-center">
+        <a
+          href="/login"
+          class="py-2 px-14 bg-blue-500 text-white rounded-sm hover:bg-blue-400 mb-5 inline-block text-center"
+          >Go to the log-in page</a
+        >
+        <a
+          href="/register"
+          class="px-14 py-2 bg-blue-950 text-white rounded-sm hover:bg-blue-900 inline-block text-center"
+          >Or create an account</a
+        >
+      </div>
     </section>
     <%-include("../partials/footer")%>
   </body>
