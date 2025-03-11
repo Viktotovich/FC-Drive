@@ -1,6 +1,6 @@
 const links = require("../links");
 const passport = require("passport");
-const passwordUtils = require("../lib/passportUtils");
+const passwordUtils = require("../lib/passwordUtils");
 const { db } = require("../db");
 const { validationResult } = require("express-validator");
 
