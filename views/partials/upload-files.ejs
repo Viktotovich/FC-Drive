@@ -5,18 +5,11 @@ OR: a new route/page
 -->
 
 <div class="mt-15">
-  <form action="/submit/<%=storage.id%>" method="POST">
-    <div class="mb-5">
-      <label for="fileName" class="block">File Name: </label>
-      <input
-        type="text"
-        id="fileName"
-        name="fileName"
-        minlength="3"
-        maxlength="70"
-        class="rounded-sm border-sky-900 pl-1 border-1"
-      />
-    </div>
+  <form
+    action="/submit/<%=storage.id%>"
+    method="POST"
+    enctype="multipart/form-data"
+  >
     <div>
       <label for="file" class="block">Upload your file: </label>
       <input
