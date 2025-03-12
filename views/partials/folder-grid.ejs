@@ -1,10 +1,7 @@
-<%console.dir(storage.files, null) %>
-<div class="grid grid-cols-2">
-  <%if (storage.files === undefined || storage.files.length < 1){ %>
-  <p>You have no folders saved yet</p>
-  <p>Consider saving / creating a new folder</p>
-  <%} else { %> <%storage.file.forEach((item) => { %>
-  <p><%=item.name%></p>
-  <div><%=item.content%></div>
-  <%})%> <%}%>
-</div>
+<%if (storage.files === undefined || storage.files.length < 1){ %>
+<p>You have no folders saved yet</p>
+<p>Consider saving / creating a new folder</p>
+<%} else { %> <%storage.file.forEach((item) => { %>
+<p><%=item.name%></p>
+<div><%=item.content%></div>
+<%})%> <%}%>

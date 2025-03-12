@@ -10,7 +10,10 @@
     <%-include("../partials/header")%>
     <section class="mx-20">
       <h1 class="mt-5 mb-10 text-3xl text-center"><%=title%></h1>
-      <%-include("../partials/folder-grid")%>
+      <div class="grid grid-cols-2">
+        <%-include("../partials/folder-grid")%>
+      </div>
+      <%-include("../partials/upload-files")%>
     </section>
     <%-include("../partials/footer")%>
   </body>
