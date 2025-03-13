@@ -38,12 +38,13 @@ module.exports.postCreateFolder = async (req, res) => {
 
 module.exports.getFolderPrivate = async (req, res) => {
   if (req.isAuthenticated()) {
-    const { folderId } = req.param;
+    const { folderId } = req.params;
     const folderData = await db.folder.findFirst({
       where: {
         id: folderId,
       },
     });
+    console.dir(folderData, null);
     const title = "Viewing folder: " + folderData.name;
     const location = "/folder";
 
