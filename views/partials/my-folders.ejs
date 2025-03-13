@@ -1,0 +1,11 @@
+<%if (folders !== null && folders.length > 0){ %> <%folders.forEach((folder) =>
+{ %>
+<div
+  class="rounded-sm hover:bg-amber-100 border-slate-200 hover:border-amber-200 border-1"
+>
+  <a href="/folder/<%=folder.id%>" class="flex">
+    <span class="text-xl py-1 ml-3">📂</span>
+    <p class="ml-10 grid content-center"><%=folder.name%></p>
+  </a>
+</div>
+<%})%> <%}%>
