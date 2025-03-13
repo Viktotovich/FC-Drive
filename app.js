@@ -11,7 +11,7 @@ const { PrismaClient } = require("@prisma/client");
 
 //Routes
 const indexRouter = require("./routes/indexRouter");
-const submitRouter = require("./routes/submitRouter");
+const folderRouter = require("./routes/folderRouter");
 
 const app = express();
 
@@ -43,7 +43,7 @@ app.use(
 app.use(passport.session());
 
 app.use("/", indexRouter);
-app.use("/submit", submitRouter);
+app.use("/folder", folderRouter);
 
 app.listen(process.env.PORT, () => {
   console.log("Hey Ya");

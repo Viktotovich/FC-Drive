@@ -1,7 +1,8 @@
-<%if (storage.files === undefined || storage.files.length < 1){ %>
+<%if (folder === null || folder.files === undefined || folder.files.length < 1){
+%>
 <p>You have no folders saved yet</p>
 <p>Consider saving / creating a new folder</p>
-<%} else { %> <%storage.file.forEach((item) => { %>
+<%} else { %> <%folder.file.forEach((item) => { %>
 <p><%=item.name%></p>
 <div><%=item.content%></div>
 <%})%> <%}%>
