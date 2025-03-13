@@ -5,7 +5,7 @@ const multer = require("multer");
 
 const upload = multer({ dest: "uploads/" });
 
-module.exports.postSubmitFile = [upload.single("file"), processSubmitFile];
+module.exports.postSubmitFile = [upload.single("userFile"), processSubmitFile];
 
 module.exports.getCreateFolder = (req, res) => {
   if (req.isAuthenticated()) {
@@ -69,6 +69,8 @@ module.exports.getCreateFile = async (req, res) => {
 function processSubmitFile(req, res) {
   if (req.isAuthenticated()) {
     console.log(req.file, req.body);
+    const { folderId } = req.params;
+
     //TODO: Store the file somewhere and save the link or whatever
   } else {
     res.status(501).send("You are unauthorized to perform this action");

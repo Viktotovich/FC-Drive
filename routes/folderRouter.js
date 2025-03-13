@@ -14,6 +14,6 @@ folderRouter.get("/:folderId/create-file", getCreateFile);
 
 //POSTS
 folderRouter.post("/create", postCreateFolder);
-folderRouter.post("/submit/:folderId", postSubmitFile);
+folderRouter.post("/:folderId/createFile", postSubmitFile);
 
 module.exports = folderRouter;

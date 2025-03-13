@@ -48,6 +48,10 @@ model File {
   content   Bytes
   Folder    Folder   @relation(fields: [folderId], references: [id])
   folderId  String
+  size      BigInt
+  path      String
+  encoding  String
+  mimetype  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
