@@ -10,7 +10,8 @@ module.exports.postSubmitFile = [upload.single("file"), processSubmitFile];
 module.exports.getCreateFolder = (req, res) => {
   if (req.isAuthenticated()) {
     const title = "Create a new folder, " + req.user.fullname;
-    res.render("pages/create-folder", { title, links });
+    const location = "/folder";
+    res.render("pages/create-folder", { title, links, location });
   } else {
     res.status(501).send("You are unauthorized to perform this action");
   }
