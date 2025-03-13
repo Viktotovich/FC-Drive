@@ -16,6 +16,7 @@
     --color-blue-600: oklch(0.546 0.245 262.881);
     --color-blue-900: oklch(0.379 0.146 265.522);
     --color-blue-950: oklch(0.282 0.091 267.935);
+    --color-slate-50: oklch(0.984 0.003 247.858);
     --color-slate-200: oklch(0.929 0.013 255.508);
     --color-slate-300: oklch(0.869 0.022 252.894);
     --color-slate-500: oklch(0.554 0.046 257.417);
@@ -428,6 +429,13 @@
       }
     }
   }
+  .hover\:border-slate-50 {
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-slate-50);
+      }
+    }
+  }
   .hover\:border-slate-200 {
     &:hover {
       @media (hover: hover) {
@@ -481,6 +489,13 @@
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-sky-50);
+      }
+    }
+  }
+  .hover\:bg-slate-50 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-slate-50);
       }
     }
   }
