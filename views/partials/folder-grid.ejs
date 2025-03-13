@@ -1,8 +1,0 @@
-<%if (folder === null || folder.files === undefined || folder.files.length < 1){
-%>
-<p>You have no folders saved yet</p>
-<p>Consider saving / creating a new folder</p>
-<%} else { %> <%folder.file.forEach((item) => { %>
-<p><%=item.name%></p>
-<div><%=item.content%></div>
-<%})%> <%}%>

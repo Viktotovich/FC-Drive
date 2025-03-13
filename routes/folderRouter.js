@@ -1,6 +1,6 @@
-const submitRouter = require("express").Router();
+const folderRouter = require("express").Router();
 const { postSubmitFile } = require("../controllers/folderController");
 
-submitRouter.post("/submit/:folderId", postSubmitFile);
+folderRouter.post("/submit/:folderId", postSubmitFile);
 
-module.exports = submitRouter;
+module.exports = folderRouter;

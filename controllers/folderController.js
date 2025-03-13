@@ -9,6 +9,7 @@ module.exports.postSubmitFile = [upload.single("file"), processSubmitFile];
 function processSubmitFile(req, res) {
   if (req.isAuthenticated()) {
     console.log(req.file, req.body);
+    //TODO: Store the file somewhere and save the link or whatever
   } else {
     res.status(501).send("You are unauthorized to perform this action");
   }
