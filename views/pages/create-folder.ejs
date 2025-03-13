@@ -8,9 +8,31 @@
   </head>
   <body>
     <%-include("../partials/header")%>
-    <section>
-      <h1><%=title%></h1>
-      <p>TODO:</p>
+    <section class="mx-20">
+      <h1 class="mt-5 mb-10 text-3xl text-center"><%=title%></h1>
+      <p class="text-center">
+        A folder is where you will store your files: i.e: images, videos, pdfs.
+      </p>
+      <form action="/create" method="POST" class="mt-5">
+        <fieldset class="border-slate-500 flex flex-col items-center border-1">
+          <legend class="p-1 ml-4">Creating your own folder:</legend>
+          <label for="folderName" class="mt-5">Folder Name: </label>
+          <input
+            type="text"
+            minlength="2"
+            maxlength="50"
+            required
+            placeholder="i.e: Personal"
+            class="mb-3 mt-1 pl-1 rounded-sm border-sky-900 border-1"
+          />
+          <button
+            type="submit"
+            class="bg-blue-600 text-white hover:bg-blue-500 py-1 px-7 rounded-sm mt-2 mb-7 hover:cursor-pointer"
+          >
+            Create a folder
+          </button>
+        </fieldset>
+      </form>
     </section>
     <%-include("../partials/footer")%>
   </body>
