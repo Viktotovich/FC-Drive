@@ -39,7 +39,7 @@ model Folder {
   name   String?
   files  File[]
   user   User    @relation(fields: [userId], references: [id])
-  userId String  @unique
+  userId String
 }
 
 model File {

@@ -17,6 +17,26 @@ module.exports.getCreateFolder = (req, res) => {
   }
 };
 
+module.exports.postCreateFolder = async (req, res) => {
+  if (req.isAuthenticated()) {
+    const { folderName } = req.body;
+    const userId = req.user.id;
+    await db.folder.create({
+      data: {
+        name: folderName,
+        user: {
+          connect: { id: userId },
+        },
+      },
+    });
+
+    res.redirect("/main");
+  } else {
+    res.status(501).send("You are unauthorized to perform this action");
+  }
+};
+
+//postSubmitFile, made this way as we need Multer middleware
 function processSubmitFile(req, res) {
   if (req.isAuthenticated()) {
     console.log(req.file, req.body);

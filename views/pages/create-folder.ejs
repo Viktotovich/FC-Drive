@@ -13,7 +13,7 @@
       <p class="text-center">
         A folder is where you will store your files: i.e: images, videos, pdfs.
       </p>
-      <form action="/create" method="POST" class="mt-5">
+      <form action="/folder/create" method="POST" class="mt-5">
         <fieldset class="border-slate-500 flex flex-col items-center border-1">
           <legend class="p-1 ml-4">Creating your own folder:</legend>
           <label for="folderName" class="mt-5">Folder Name: </label>
@@ -21,6 +21,8 @@
             type="text"
             minlength="2"
             maxlength="50"
+            id="folderName"
+            name="folderName"
             required
             placeholder="i.e: Personal"
             class="mb-3 mt-1 pl-1 rounded-sm border-sky-900 border-1"

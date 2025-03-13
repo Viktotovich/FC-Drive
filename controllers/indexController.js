@@ -91,13 +91,14 @@ module.exports.getMain = async (req, res) => {
   if (req.isAuthenticated()) {
     const title = "Welcome to the main page, " + req.user.fullname;
     const location = "/main";
-    const folder = await db.folder.findUnique({
+    const folders = await db.folder.findMany({
       where: {
         userId: req.user.id,
       },
     });
-    console.dir(folder, null);
-    res.render("pages/main", { title, links, location, folder });
+    console.dir(folders, null);
+    console.log("indexController, line 102");
+    res.render("pages/main", { title, links, location, folders });
   } else {
     res.send(
       "<p>You can't view this page as you are not authorized, log-in to your account first please.</p>",
