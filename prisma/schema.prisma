@@ -38,15 +38,14 @@ model Folder {
   id     String  @id @default(uuid())
   name   String?
   files  File[]
-  user   User    @relation(fields: [userId], references: [id])
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String
 }
 
 model File {
   id        String   @id @default(uuid())
   name      String?
-  content   Bytes
-  Folder    Folder   @relation(fields: [folderId], references: [id])
+  Folder    Folder   @relation(fields: [folderId], references: [id], onDelete: Cascade)
   folderId  String
   size      BigInt
   path      String
