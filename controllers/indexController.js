@@ -74,7 +74,9 @@ module.exports.postRegister = async (req, res, next) => {
           salt,
           hash,
           Storage: {
-            create: {},
+            create: {
+              name: "Default Folder",
+            },
           },
         },
       });
