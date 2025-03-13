@@ -43,6 +43,9 @@ module.exports.getFolderPrivate = async (req, res) => {
       where: {
         id: folderId,
       },
+      include: {
+        files: true,
+      },
     });
     console.dir(folderData, null);
     const title = "Viewing folder: " + folderData.name;
@@ -66,12 +69,22 @@ module.exports.getCreateFile = async (req, res) => {
 };
 
 //postSubmitFile, made this way as we need Multer middleware
-function processSubmitFile(req, res) {
+async function processSubmitFile(req, res) {
   if (req.isAuthenticated()) {
-    console.log(req.file, req.body);
+    const { originalname, encoding, mimetype, path, size } = req.file;
     const { folderId } = req.params;
 
-    //TODO: Store the file somewhere and save the link or whatever
+    await db.file.create({
+      data: {
+        name: originalname || folderId,
+        folderId: folderId,
+        size: size,
+        path: path,
+        encoding: encoding,
+        mimetype: mimetype,
+      },
+    });
+    res.redirect("/folder/" + folderId);
   } else {
     res.status(501).send("You are unauthorized to perform this action");
   }
