@@ -1,6 +1,13 @@
 const folderRouter = require("express").Router();
-const { postSubmitFile } = require("../controllers/folderController");
+const {
+  postSubmitFile,
+  getCreateFolder,
+} = require("../controllers/folderController");
 
+//GETS
+folderRouter.get("/create", getCreateFolder);
+
+//POSTS
 folderRouter.post("/submit/:folderId", postSubmitFile);
 
 module.exports = folderRouter;
