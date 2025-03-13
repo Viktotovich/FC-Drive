@@ -36,6 +36,23 @@ module.exports.postCreateFolder = async (req, res) => {
   }
 };
 
+module.exports.getFolderPrivate = async (req, res) => {
+  if (req.isAuthenticated()) {
+    const { folderId } = req.param;
+    const folderData = await db.folder.findFirst({
+      where: {
+        id: folderId,
+      },
+    });
+    const title = "Viewing folder: " + folderData.name;
+    const location = "/folder";
+
+    res.render("pages/folder", { title, links, location, folderData });
+  } else {
+    res.status(501).send("You are unauthorized to perform this action");
+  }
+};
+
 //postSubmitFile, made this way as we need Multer middleware
 function processSubmitFile(req, res) {
   if (req.isAuthenticated()) {

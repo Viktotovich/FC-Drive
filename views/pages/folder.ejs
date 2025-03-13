@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=title%></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <%-include("../partials/header")%>
+    <section class="mx-20">
+      <h1 class="mt-5 mb-10 text-3xl text-center"><%=title%></h1>
+      <div class="gap-5 grid grid-cols-2">
+        <%-include("../partials/upload-file")%>
+        <%-include("../partials/folder-breakdown")%>
+      </div>
+    </section>
+    <%-include("../partials/footer")%>
+  </body>
+</html>
