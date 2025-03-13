@@ -4,11 +4,13 @@ const {
   getCreateFolder,
   postCreateFolder,
   getFolderPrivate,
+  getCreateFile,
 } = require("../controllers/folderController");
 
 //GETS
 folderRouter.get("/create", getCreateFolder);
 folderRouter.get("/:folderId", getFolderPrivate);
+folderRouter.get("/:folderId/create-file", getCreateFile);
 
 //POSTS
 folderRouter.post("/create", postCreateFolder);
