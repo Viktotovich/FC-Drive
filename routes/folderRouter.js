@@ -11,8 +11,6 @@ const {
 folderRouter.get("/create", getCreateFolder);
 folderRouter.get("/:folderId", getFolderPrivate);
 folderRouter.get("/:folderId/create-file", getCreateFile);
-//TODO
-folderRouter.get("/:folderId/:fileId");
 
 //POSTS
 folderRouter.post("/create", postCreateFolder);

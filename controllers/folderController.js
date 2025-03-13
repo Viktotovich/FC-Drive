@@ -1,4 +1,3 @@
-const passport = require("passport");
 const db = require("../db");
 const links = require("../links");
 const multer = require("multer");
