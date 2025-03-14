@@ -1,0 +1,8 @@
+<div class="mb-10 grid justify-center">
+  <p class="underline">Action failed, as there are some problem(s):</p>
+  <ol>
+    <% if (errors && errors.length > 0) { %> <% errors.forEach((error) => { %>
+    <li class="flex justify-center before:content-['❌']"><%=error%></li>
+    <% }) %> <% } %>
+  </ol>
+</div>

@@ -23,6 +23,8 @@ module.exports.postLogin = (req, res, next) => {
     return res.status(400).render("pages/login", {
       title: "Login failed",
       errors: errors.array(),
+      links: links,
+      location: "/login",
     });
   }
 
@@ -34,6 +36,8 @@ module.exports.postLogin = (req, res, next) => {
       return res.render("pages/login", {
         title: "Login fail",
         errors: ["Wrong username or password."],
+        links: links,
+        location: "/login",
       });
     }
     req.logIn(user, (err) => {

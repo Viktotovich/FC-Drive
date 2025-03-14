@@ -257,6 +257,9 @@
   .max-w-60 {
     max-width: calc(var(--spacing) * 60);
   }
+  .list-decimal {
+    list-style-type: decimal;
+  }
   .grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -357,6 +360,16 @@
   .lowercase {
     text-transform: lowercase;
   }
+  .underline {
+    text-decoration-line: underline;
+  }
+  .before\:content-\[\'❌\'\] {
+    &::before {
+      content: var(--tw-content);
+      --tw-content: '❌';
+      content: var(--tw-content);
+    }
+  }
   .hover\:cursor-pointer {
     &:hover {
       @media (hover: hover) {
@@ -446,4 +459,9 @@
   syntax: "*";
   inherits: false;
   initial-value: solid;
+}
+@property --tw-content {
+  syntax: "*";
+  initial-value: "";
+  inherits: false;
 }
