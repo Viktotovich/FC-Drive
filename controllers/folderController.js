@@ -82,6 +82,39 @@ module.exports.postDeleteFolder = async (req, res) => {
   }
 };
 
+module.exports.getRenameFolder = async (req, res) => {
+  const { folderId, folderName } = req.params;
+  const title = "Rename folder: " + folderName;
+  const location = "/rename";
+  res.render("pages/rename-folder", {
+    title,
+    location,
+    links,
+    folderId,
+    folderName,
+  });
+};
+
+module.exports.postRenameFolder = async (req, res) => {
+  if (req.isAuthenticated()) {
+    const { folderId } = req.params;
+    const { folderName } = req.body;
+
+    await db.folder.update({
+      where: {
+        id: folderId,
+      },
+      data: {
+        name: folderName,
+      },
+    });
+
+    res.redirect("/main");
+  } else {
+    res.status(501).send("You are unauthorized to perform this action");
+  }
+};
+
 //postSubmitFile, made this way as we need Multer middleware
 async function processSubmitFile(req, res) {
   if (req.isAuthenticated()) {
