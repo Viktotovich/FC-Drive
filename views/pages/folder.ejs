@@ -14,16 +14,23 @@
         <%-include("../partials/upload-file")%>
         <%-include("../partials/folder-breakdown")%>
       </div>
+      <div class="mt-30 grid justify-center">
+        <a
+          href="/folder/rename/<%=folderData.id%>"
+          class="px-18 py-2 rounded-sm border-slate-100 hover:bg-slate-200 hover:border-slate-200 inline-block border-2 hover:cursor-pointer"
+          >Rename folder</a
+        >
+      </div>
       <form
         action="/folder/delete/<%=folderData.id%>"
         method="POST"
-        class="mt-15 grid justify-center"
+        class="mt-5 grid justify-center"
       >
         <button
           type="submit"
-          class="px-14 py-2 rounded-sm border-slate-200 hover:bg-slate-200 hover:border-slate-200 border-2 hover:cursor-pointer"
+          class="px-14 py-2 rounded-sm border-slate-100 hover:bg-slate-200 hover:border-slate-200 border-2 hover:cursor-pointer"
         >
-          Delete the entire folder?
+          Delete Folder
         </button>
         <p class="text-xs text-stone-500 mt-2 text-center">
           *All files inside will also be permanently deleted
