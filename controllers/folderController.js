@@ -67,6 +67,21 @@ module.exports.getCreateFile = async (req, res) => {
   }
 };
 
+module.exports.postDeleteFolder = async (req, res) => {
+  if (req.isAuthenticated()) {
+    const { folderId } = req.params;
+    await db.folder.delete({
+      where: {
+        id: folderId,
+      },
+    });
+
+    res.redirect("/main");
+  } else {
+    res.status(501).send("You are unauthorized to perform this action");
+  }
+};
+
 //postSubmitFile, made this way as we need Multer middleware
 async function processSubmitFile(req, res) {
   if (req.isAuthenticated()) {

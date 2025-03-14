@@ -14,6 +14,21 @@
         <%-include("../partials/upload-file")%>
         <%-include("../partials/folder-breakdown")%>
       </div>
+      <form
+        action="/folder/delete/<%=folderData.id%>"
+        method="POST"
+        class="mt-15 grid justify-center"
+      >
+        <button
+          type="submit"
+          class="px-14 py-2 rounded-sm border-slate-200 hover:bg-slate-200 hover:border-slate-200 border-2 hover:cursor-pointer"
+        >
+          Delete the entire folder?
+        </button>
+        <p class="text-xs text-stone-500 mt-2 text-center">
+          *All files inside will also be permanently deleted
+        </p>
+      </form>
     </section>
     <%-include("../partials/footer")%>
   </body>
