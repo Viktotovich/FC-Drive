@@ -1,8 +1,11 @@
 <div>
-  <p><%=file.size%> Bytes</p>
-  <p><%=file.mimetype%></p>
-  <p>Created At: <%=file.createdAt%></p>
-  <p>Last updated At: <%=file.updatedAt%></p>
+  <div
+    class="text-xs border-slate-200 p-2 flex justify-between border-1 border-b-0"
+  >
+    <p><%=file.size%> Bytes</p>
+    <p><%=file.mimetype%></p>
+    <p>Created At: <%=file.createdAt%></p>
+  </div>
   <% if (/^image*/.test(file.mimetype)){ %>
   <img src="<%=file.path%>" alt="" />
   <%} else { %>
@@ -11,5 +14,12 @@
     view the document.
   </p>
   <%}%>
-  <a href="<%=file.path%>" download="<%=file.name%>">Download file</a>
+  <div class="flex justify-center">
+    <a
+      href="<%=file.path%>"
+      download="<%=file.name%>"
+      class="mb-10 mt-5 px-14 py-2 rounded-sm bg-blue-950 text-white hover:bg-blue-900 inline-block hover:cursor-pointer"
+      >Download file</a
+    >
+  </div>
 </div>

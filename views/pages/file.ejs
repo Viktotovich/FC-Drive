@@ -11,9 +11,18 @@
     <section class="mx-20">
       <h1 class="mt-5 mb-10 text-3xl text-center"><%=title%></h1>
       <%-include("../partials/file-breakdown")%>
-      <form action="/file/<%=file.name%>/<%=file.id%>/delete" method="POST">
-        <h2>This action will be irreversable:</h2>
-        <button type="submit">Delete</button>
+      <form
+        action="/file/<%=file.name%>/<%=file.id%>/delete"
+        method="POST"
+        class="mb-20 grid justify-center"
+      >
+        <button
+          type="submit"
+          class="px-14 py-2 rounded-sm border-slate-100 hover:bg-slate-100 hover:border-slate-200 border-2 hover:cursor-pointer"
+        >
+          Delete
+        </button>
+        <p class="text-xs">*This action will be irreversable</p>
       </form>
     </section>
     <%-include("../partials/footer")%>

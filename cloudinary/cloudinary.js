@@ -6,6 +6,7 @@ const { CLOUDINARY_URL } = process.env;
 cloudinary.config({
   cloudinary_url: CLOUDINARY_URL,
   secure: true,
+  resource_type: "auto", //TODO: still doesnt work for PDFs
 });
 
 cloudinary.config();
@@ -21,6 +22,7 @@ module.exports.uploadAsset = async (imagePath) => {
 
   try {
     const result = await cloudinary.uploader.upload(imagePath, options);
+    console.log(result);
     return result;
   } catch (err) {
     console.error(err);
