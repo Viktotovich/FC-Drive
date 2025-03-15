@@ -102,8 +102,6 @@ module.exports.getMain = async (req, res) => {
         userId: req.user.id,
       },
     });
-    console.dir(folders, null);
-    console.log("indexController, line 102");
     res.render("pages/main", { title, links, location, folders });
   } else {
     res.send(

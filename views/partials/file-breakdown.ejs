@@ -3,6 +3,13 @@
   <p><%=file.mimetype%></p>
   <p>Created At: <%=file.createdAt%></p>
   <p>Last updated At: <%=file.updatedAt%></p>
+  <% if (/^image*/.test(file.mimetype)){ %>
   <img src="<%=file.path%>" alt="" />
+  <%} else { %>
+  <p>
+    Preview not available for <%=file.mimetype%>s, click the download button to
+    view the document.
+  </p>
+  <%}%>
   <a href="<%=file.path%>" download="<%=file.name%>">Download file</a>
 </div>
