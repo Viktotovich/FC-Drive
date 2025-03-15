@@ -1,7 +1,8 @@
 const fileRouter = require("express").Router();
-const { getFile } = require("../controllers/fileController");
+const { getFile, postDeleteFile } = require("../controllers/fileController");
 
-//TODO - continue in fileController
 fileRouter.get("/:fileName/:fileId", getFile);
+
+fileRouter.post("/:fileName/:fileId/delete", postDeleteFile);
 
 module.exports = fileRouter;

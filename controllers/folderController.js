@@ -122,7 +122,7 @@ async function processSubmitFile(req, res) {
     const { originalname, encoding, mimetype, path, size } = req.file;
     const { folderId } = req.params;
 
-    const url = await cloud.uploadAsset(path);
+    const { url, public_id } = await cloud.uploadAsset(path);
 
     await db.file.create({
       data: {
@@ -130,6 +130,7 @@ async function processSubmitFile(req, res) {
         folderId: folderId,
         size: size,
         path: url,
+        publicId: public_id,
         encoding: encoding,
         mimetype: mimetype,
       },

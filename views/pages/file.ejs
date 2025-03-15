@@ -11,7 +11,7 @@
     <section class="mx-20">
       <h1 class="mt-5 mb-10 text-3xl text-center"><%=title%></h1>
       <%-include("../partials/file-breakdown")%>
-      <form action="/folder/<%=file.name%>/<%=file.id%>/delete" method="POST">
+      <form action="/file/<%=file.name%>/<%=file.id%>/delete" method="POST">
         <h2>This action will be irreversable:</h2>
         <button type="submit">Delete</button>
       </form>

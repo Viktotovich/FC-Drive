@@ -48,6 +48,7 @@ model File {
   Folder    Folder   @relation(fields: [folderId], references: [id], onDelete: Cascade)
   folderId  String
   size      BigInt
+  publicId  String?
   path      String
   encoding  String
   mimetype  String
