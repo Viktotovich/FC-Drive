@@ -1,15 +1,8 @@
-<!--
-File size
-File content
-File type
-File encoding
-Install File
--->
 <div>
   <p><%=file.size%> Bytes</p>
   <p><%=file.mimetype%></p>
   <p>Created At: <%=file.createdAt%></p>
   <p>Last updated At: <%=file.updatedAt%></p>
-  <img src="/<%=file.path%>" alt="" />
-  <a href="/<%=file.path%>" download="">Download file</a>
+  <img src="<%=file.path%>" alt="" />
+  <a href="<%=file.path%>" download="<%=file.name%>">Download file</a>
 </div>

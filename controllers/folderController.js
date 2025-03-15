@@ -1,6 +1,7 @@
 const db = require("../db");
 const links = require("../links");
 const multer = require("multer");
+const cloud = require("../cloudinary/cloudinary");
 
 const upload = multer({ dest: "uploads/" });
 
@@ -121,12 +122,14 @@ async function processSubmitFile(req, res) {
     const { originalname, encoding, mimetype, path, size } = req.file;
     const { folderId } = req.params;
 
+    const url = await cloud.uploadAsset(path);
+
     await db.file.create({
       data: {
         name: originalname || folderId,
         folderId: folderId,
         size: size,
-        path: path,
+        path: url,
         encoding: encoding,
         mimetype: mimetype,
       },
