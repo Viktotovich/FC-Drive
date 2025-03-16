@@ -12,7 +12,7 @@
   </div>
   <div>
     <h2 class="text-xl mb-5 text-center">Share <%=file.name%></h2>
-    <form action="/share/create/<%=file.id%>">
+    <form action="/share/create/<%=file.id%>" method="POST">
       <p class="mb-5">
         Confirm link creation (it will be publicly accessible to anyone with
         it). The following link will be created:
