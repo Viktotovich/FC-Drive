@@ -1,0 +1,41 @@
+<dialog
+  id="share"
+  class="py-10 px-10 rounded-sm bg-slate-100 border-slate-400 top-70 left-80 mr-10 border-1"
+>
+  <div class="top-5 absolute">
+    <button
+      onclick="document.querySelector('#share').toggleAttribute('open')"
+      class="text-red-900 hover:text-red-500 hover:cursor-pointer"
+    >
+      x
+    </button>
+  </div>
+  <div>
+    <h2 class="text-xl mb-5 text-center">Share <%=file.name%></h2>
+    <form action="/share/create/<%=file.id%>">
+      <p class="mb-5">
+        Confirm link creation (it will be publicly accessible to anyone with
+        it). The following link will be created:
+      </p>
+      <!--Change this in Production from fileController-->
+      <p class="mb-3 italic">localhost:3000/share/<%=file.id%></p>
+      <h3 class="mb-3">How long do you want the link to be available for?</h3>
+      <div>
+        <input type="radio" id="oneDay" name="validity" value="oneDay" />
+        <label for="oneDay">1 day</label>
+        <input type="radio" id="threeDays" name="validity" value="threeDays" />
+        <label for="threeDays">3 days</label>
+        <input type="radio" id="threeDays" name="validity" />
+        <label for="oneWeek">1 week</label>
+      </div>
+      <div class="grid justify-center">
+        <button
+          type="submit"
+          class="mt-7 px-18 py-2 rounded-sm bg-blue-500 text-white hover:bg-blue-600 inline-block hover:cursor-pointer"
+        >
+          Create Shareable link
+        </button>
+      </div>
+    </form>
+  </div>
+</dialog>

@@ -7,19 +7,28 @@
     <p>Created At: <%=file.createdAt%></p>
   </div>
   <% if (/^image*/.test(file.mimetype)){ %>
-  <img src="<%=file.path%>" alt="" />
+  <div class="grid justify-center">
+    <img src="<%=file.path%>" alt="" class="max-w-lg" />
+  </div>
   <%} else { %>
   <p>
     Preview not available for <%=file.mimetype%>s, click the download button to
     view the document.
   </p>
   <%}%>
-  <div class="flex justify-center">
+  <div class="flex justify-around">
     <a
       href="<%=file.path%>"
       download="<%=file.name%>"
       class="mb-10 mt-5 px-14 py-2 rounded-sm bg-blue-950 text-white hover:bg-blue-900 inline-block hover:cursor-pointer"
       >Download file</a
     >
+    <button
+      class="mb-10 mt-5 px-18 py-2 rounded-sm bg-blue-500 text-white hover:bg-blue-600 inline-block hover:cursor-pointer"
+      onclick="document.querySelector('#share').toggleAttribute('open')"
+    >
+      Share file
+    </button>
+    <%-include("./create-share.ejs")%>
   </div>
 </div>
