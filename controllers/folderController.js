@@ -3,7 +3,13 @@ const links = require("../links");
 const multer = require("multer");
 const cloud = require("../cloudinary/cloudinary");
 
-const upload = multer({ dest: "uploads/" });
+const storage = multer.diskStorage({
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
 
 module.exports.postSubmitFile = [upload.single("userFile"), processSubmitFile];
 

@@ -2,6 +2,7 @@ const cloudinary = require("cloudinary").v2;
 const { CLOUDINARY_URL } = process.env;
 //https://cloudinary.com/documentation/node_quickstart
 //Refactored into chunks
+//TODO: REFACTOR TO USE MULTER CLOUDINARY
 
 cloudinary.config({
   cloudinary_url: CLOUDINARY_URL,
