@@ -20,6 +20,13 @@ model Session {
   expiresAt DateTime
 }
 
+model AllowedRoute {
+  id        String   @id @default(uuid())
+  expiresAt DateTime
+  File      File?    @relation(fields: [fileId], references: [id])
+  fileId    String?
+}
+
 model User {
   id        String   @id @default(uuid())
   username  String   @unique
@@ -43,15 +50,16 @@ model Folder {
 }
 
 model File {
-  id        String   @id @default(uuid())
-  name      String?
-  Folder    Folder   @relation(fields: [folderId], references: [id], onDelete: Cascade)
-  folderId  String
-  size      BigInt
-  publicId  String?
-  path      String
-  encoding  String
-  mimetype  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           String         @id @default(uuid())
+  name         String?
+  Folder       Folder         @relation(fields: [folderId], references: [id], onDelete: Cascade)
+  folderId     String
+  size         BigInt
+  publicId     String?
+  path         String
+  encoding     String
+  mimetype     String
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  AllowedRoute AllowedRoute[]
 }
