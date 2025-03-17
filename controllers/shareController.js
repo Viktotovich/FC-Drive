@@ -1,6 +1,5 @@
 const links = require("../links");
 const db = require("../db");
-const cloud = require("../cloudinary/cloudinary");
 
 module.exports.postShareFile = async (req, res) => {
   if (req.isAuthenticated()) {
@@ -22,6 +21,34 @@ module.exports.postShareFile = async (req, res) => {
     res.redirect(path);
   } else {
     res.status(501).send("You are unauthorized to perform this action");
+  }
+};
+
+module.exports.getPublicFile = async (req, res) => {
+  const { fileId } = req.params;
+  const expirationDate = await db.allowedRoute.findFirst({
+    where: {
+      fileId: fileId,
+    },
+  });
+
+  if (!checkIfExpired(expirationDate)) {
+    const file = await db.file.findFirst({
+      where: {
+        id: fileId,
+      },
+    });
+
+    const title = "Viewing " + file.name;
+    const location = "/share";
+
+    res.render("pages/shared-file", { links, title, location, file });
+  } else {
+    res
+      .status(501)
+      .send(
+        "Unfortunately, this link has expired and you can no longer view its contents.",
+      );
   }
 };
 

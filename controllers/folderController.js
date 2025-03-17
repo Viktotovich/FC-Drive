@@ -53,7 +53,6 @@ module.exports.getFolderPrivate = async (req, res) => {
         files: true,
       },
     });
-    console.dir(folderData, null);
     const title = "Viewing folder: " + folderData.name;
     const location = "/folder";
 

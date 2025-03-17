@@ -1,5 +1,10 @@
 const shareRouter = require("express").Router();
-const { postShareFile } = require("../controllers/shareController");
+const {
+  postShareFile,
+  getPublicFile,
+} = require("../controllers/shareController");
+
+shareRouter.get("/:fileId", getPublicFile);
 
 shareRouter.post("/create/:fileId", postShareFile);
 
